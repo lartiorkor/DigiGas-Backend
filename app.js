@@ -1,5 +1,9 @@
+require("dotenv").config();
+
 const express = require("express");
 const mongoose = require("mongoose");
+
+const port = process.env.PORT || 6000;
 
 const db =
   "mongodb+srv://digigas:test1234@cluster0.rthkjnq.mongodb.net/digigas?retryWrites=true&w=majority";
@@ -18,8 +22,8 @@ mongoose
   .connect(db, { useNewUrlParser: true })
   .then(() => {
     console.log("⚡ connected to mongodb");
-    app.listen(4000, () => {
-      console.log("🚀 server running at localhost port 4000");
+    app.listen(port, () => {
+      console.log(`🚀 server running at localhost port ${port}`);
     });
   })
   .catch((err) => console.log("mongoose err: ", err));
